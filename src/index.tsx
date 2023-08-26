@@ -5,6 +5,8 @@ import Home from './Home';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
+import Login from './Login';
+import Signup from './Signup';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,6 +18,8 @@ root.render(
       <Navbar />
       <Routes>
         <Route path='/' element={ <Home /> } />
+        <Route path='/login' element={ <Login /> } />
+        <Route path='/signup' element={ <Signup /> } />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
