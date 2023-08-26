@@ -33,6 +33,18 @@ const Signup = () => {
     const [showFailure, setShowFailure] = useState<boolean>(false);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const listener = (evt: KeyboardEvent) => {
+            if (evt.code === 'Enter') { // if enter is pressed, find the continue button element and click it
+                const button = document.getElementById('continue-button');
+                button?.click();
+            }
+        };
+        window.addEventListener('keypress', listener);
+        // the function you tell useEffect to return is executed only when this element unloads, so leaving the signup page will remove the event listener
+        return () => window.removeEventListener('keypress', listener);
+    }, []); // empty dependency array means it'll only run once when the page first loads
+
     // check if fields have been changed from empty to not, or vice versa
     // if so, apply necessary validation error (if they already filled it in but now it's blank)
     useEffect(() => {
@@ -149,6 +161,7 @@ const Signup = () => {
                     error={confirmPasswordError}
                 />
                 <Button
+                    id='continue-button'
                     className='m-auto'
                     text='Continue'
                     onClick={() => {

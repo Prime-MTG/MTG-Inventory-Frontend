@@ -16,6 +16,18 @@ const Login = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const listener = (evt: KeyboardEvent) => {
+            if (evt.code === 'Enter') { // if enter is pressed, find the continue button element and click it
+                const button = document.getElementById('continue-button');
+                button?.click();
+            }
+        };
+        window.addEventListener('keypress', listener);
+        // the function you tell useEffect to return is executed only when this element unloads, so leaving the login page will remove the event listener
+        return () => window.removeEventListener('keypress', listener);
+    }, []); // empty dependency array means it'll only run once when the page first loads
+
+    useEffect(() => {
         if (username.length > 0) {
             if (startingState.un) {
                 setStartingState({...startingState, un: false});
@@ -56,6 +68,7 @@ const Login = () => {
                     error={passwordError}
                 />
                 <Button
+                    id='continue-button'
                     className='m-auto'
                     text='Continue'
                     onClick={() => {

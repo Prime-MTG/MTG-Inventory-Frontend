@@ -3,11 +3,12 @@ import React from 'react';
 interface Props {
     text: string,
     onClick: () => void,
+    id?: string,
     className?: string,
     disabled?: boolean
 }
 
-const Button = ({text, onClick, className, disabled = false}: Props) => {
+const Button = ({text, onClick, id, className, disabled = false}: Props) => {
     const assembleButtonClasses = () => {
         let classes = `flex text-xl px-4 py-1 rounded-md ${className} `;
 
@@ -21,7 +22,7 @@ const Button = ({text, onClick, className, disabled = false}: Props) => {
     };
 
     return (
-        <button className={assembleButtonClasses()} onClick={onClick}>
+        <button id={id ?? Math.floor(Math.random()*100000).toString()} className={assembleButtonClasses()} onClick={onClick}>
             {text}
         </button>
     );
