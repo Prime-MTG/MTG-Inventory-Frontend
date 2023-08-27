@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div className="flex flex-row w-full p-4 justify-between items-center">
+        <div className="flex flex-row w-full p-4 border-b-2 border-slate-700 justify-between items-center">
             <div className="flex text-2xl text-slate-700">
                 <Link to="/"> PrimeMTG </Link>
             </div>
