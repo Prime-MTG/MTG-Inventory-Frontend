@@ -204,6 +204,7 @@ const Signup = () => {
                         if (isValidEmail && username.length > 0 && isValidPassword && password === confirmPassword) {
                             const valid = true; // later this should check with the database, and enable a disabled loading state on the button while async
                             if (valid) {
+                                window.localStorage.setItem('primeMTGLogin', 'true');
                                 navigate('/');
                             } else {
                                 setShowFailure(true);

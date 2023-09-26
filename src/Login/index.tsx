@@ -81,6 +81,7 @@ const Login = () => {
                         if (username.length > 0 && password.length > 0) {
                             const valid = true; // later this should check with the database, and enable a disabled loading state on the button while async
                             if (valid) {
+                                window.localStorage.setItem('primeMTGLogin', 'true');
                                 navigate('/');
                             } else {
                                 setShowFailure(true);
